@@ -47,10 +47,10 @@ app.get('/weatherdata', (request, response) => {
         });
         response.json(array);
       } else {
-        response.send('The City is not defiend');
+        response.send('there is no city');
       }
     } else {
-      response.send('Error : You Have Not Entered Any Data!');
+      response.send('there is no data');
     }
   });
   app.listen(PORT, () => {
