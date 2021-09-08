@@ -51,6 +51,8 @@ const cityName12 = weatherReson.data;
         // let selectedCityData = selecteData.data;
               
         // let array = [];
+        // let array = [];
+        // let array = [];
        
 
 
