@@ -1,4 +1,5 @@
 
+.env
 {
   
   "name": "city-explorer-api",
@@ -374,4 +375,3 @@
     }
   }
 }
-.env
