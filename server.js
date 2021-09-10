@@ -1,61 +1,48 @@
 "use strict";
-
-
-const express = require('express') ;
-const app = express();
+const express = require('express') // require the express package
+const app = express() 
 const cors = require('cors');
-const axios = require('axios');
+app.use(cors())
 require('dotenv').config();
-app.use(cors());
- 
-const PORT = process.env.PORT;
-
-
-
-const weather = require('./data/weather.json')
-app.get('/weather', (request, response) => {
-  const city = request.query.city_name;
-  const lat = request.query.lat;
-  const lon = request.query.lon;
-
-  if (city) {
-    const select = weather.find((element) => {
-      return element.city_name.toLowerCase() === city;
-    });
-    if (select) {
-      let selectedData = select.data;
-      let array = [];
-      class Forcast {
-        constructor(data, description) {
-          this.data = data;
-          this.description = description;
-        }
-      }
-      selectedData.map((element) => {
-        let object = new Forcast(
-          element.datetime,
-          element.weather.description
-        );
-
-        array.push(object);
-
-
-
-      });
-      response.json(array);
-
-
-    } 
-    else {
-      response.send('that city is not there');
-    }
-  } 
-  
-  else {
-    response.send('there is no city');
+const axios = require('axios'); // require the package
+const PORT = process.env.PORT
+class Cast{
+  constructor(data,description){
+    this.data=data;
+    
+    this.description=description;
   }
+}
+const weather = require("./data/weather.json");
+app.get('/weather',(req,res)=>{
+
+  const city_name =req.query.city_name;
+  const lon =req.query.lon;
+  const lat =req.query.lat;
 
 
-});
-app.listen(PORT, () => {
-});
+  const array=weather.find((element)=>{
+    return element.city_name.toLowerCase() === city_name;
+  });
+  if(array){
+    
+    let arrayOfData=array.data.map((value) => {
+      // console.log(data1.weather.description);
+      return new Cast(value.datetime,value.weather.description);
+    });
+  
+
+  if(arrayOfData){
+
+    res.json(arrayOfData)
+  }else{res.send('no')}
+  }else{
+    res.json(weather)
+    
+  }
+}
+)
+// inside your callback function
+app.listen(PORT,()=>{
+  console.log(`f  sss ${PORT}`);
+})
