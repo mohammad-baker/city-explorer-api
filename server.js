@@ -23,7 +23,7 @@ app.get('/weather',(req,res)=>{
 
 
 
-  
+
   const array=weather.find((element)=>{
     return element.city_name.toLowerCase() === city_name;
   });
@@ -45,7 +45,7 @@ app.get('/weather',(req,res)=>{
   }
 }
 )
-
+// port of
 app.listen(PORT,()=>{
   console.log(`f  sss ${PORT}`);
 })
