@@ -1,10 +1,10 @@
 "use strict";
-const express = require('express') // require the express package
+const express = require('express')
 const app = express() 
 const cors = require('cors');
 app.use(cors())
 require('dotenv').config();
-const axios = require('axios'); // require the package
+const axios = require('axios');
 const PORT = process.env.PORT
 class Cast{
   constructor(data,description){
@@ -21,13 +21,16 @@ app.get('/weather',(req,res)=>{
   const lat =req.query.lat;
 
 
+
+
+  
   const array=weather.find((element)=>{
     return element.city_name.toLowerCase() === city_name;
   });
   if(array){
     
     let arrayOfData=array.data.map((value) => {
-      // console.log(data1.weather.description);
+  
       return new Cast(value.datetime,value.weather.description);
     });
   
@@ -42,7 +45,7 @@ app.get('/weather',(req,res)=>{
   }
 }
 )
-// inside your callback function
+
 app.listen(PORT,()=>{
   console.log(`f  sss ${PORT}`);
 })
