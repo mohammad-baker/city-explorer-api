@@ -10,7 +10,7 @@ const citweather = require('./controller/weather.controller');
 const citmovie = require('./controller/movie.controller');
 
 
-
+///gjbgdfv
 app.get('/weather', citweather);
 
 app.get('/movie', citmovie);
